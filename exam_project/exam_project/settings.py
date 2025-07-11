@@ -180,5 +180,5 @@ JAZZMIN_SETTINGS = {
 
     "changeform_format": "horizontal_tabs",
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
-    "language_chooser": True
+    "language_chooser": False
 }

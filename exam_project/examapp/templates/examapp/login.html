@@ -1,79 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-    <style>
-        body {
-            background: #f2f2f2;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <title>Login - YourApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      box-sizing: border-box;
+    }
 
-        .login-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            width: 300px;
-        }
+    body {
+      height: 100vh;
+      background: url('https://static.vecteezy.com/system/resources/previews/008/311/935/non_2x/the-illustration-graphic-consists-of-abstract-background-with-a-blue-gradient-dynamic-shapes-composition-eps10-perfect-for-presentation-background-website-landing-page-wallpaper-vector.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .login-box h2 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
+    .login-box {
+      width: 380px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 35px 30px;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      animation: float 4s ease-in-out infinite;
+    }
 
-        .login-box input[type="text"],
-        .login-box input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 8px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
 
-        .login-box button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    .login-box .logo {
+      width: 60px;
+      margin: 0 auto 20px;
+      display: block;
+    }
 
-        .login-box button:hover {
-            background-color: #45a049;
-        }
+    .login-box h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
 
-        .login-box .signup-link {
-            text-align: center;
-            margin-top: 15px;
-            font-size: 14px;
-        }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      font-size: 14px;
+    }
 
-        .login-box .signup-link a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
+    .login-box input::placeholder {
+      color: #ddd;
+    }
 
-        .login-box .signup-link a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    .login-box input:focus {
+      outline: none;
+      box-shadow: 0 0 6px #00bfff;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .options {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin: 8px 0 15px;
+    }
+
+    .options label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .options a {
+      color: #add8e6;
+      text-decoration: none;
+    }
+
+    .options a:hover {
+      text-decoration: underline;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #00bfff, #1e90ff);
+      border: none;
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 191, 255, 0.4);
+    }
+
+    button:hover {
+      background: linear-gradient(to right, #1e90ff, #00bfff);
+      box-shadow: 0 6px 20px rgba(0, 191, 255, 0.6);
+    }
+
+    .social-login {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .social-login span {
+      display: block;
+      margin-bottom: 8px;
+      color: #eee;
+    }
+
+    .social-icons img {
+      width: 32px;
+      margin: 0 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .social-icons img:hover {
+      transform: scale(1.1);
+    }
+  </style>
 </head>
 <body>
+<div class="login-box">
+  <!-- Updated Logo -->
+  <img src="/static/images/my_logo.png" alt="My Logo" class="logo">
 
-    <div class="login-box">
-        <h2>Login</h2>
-        <form method="post" action="/login/">
-            <!-- Django CSRF Token if used -->
-            {% csrf_token %}
-            <input type="text" name="username" placeholder="Username" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-            <div class="signup-link">
-                Don't have
+  <h2>Login</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+
+    <div class="options">
+      <label><input type="checkbox" name="remember"> Remember me</label>
+      <a href="#">Forgot Password?</a>
+    </div>
+
+    <button type="submit">Sign In</button>
+
+    <!-- 👇 Add Sign Up Link -->
+    <p class="signup-link">Don't have an account? <a href="/signup/">Sign up</a></p>
+  </form>
+
+  <div class="social_login">
+    <span>Or sign in with</span>
+    <div class="social_icons">
+      <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/mac-os.png" alt="Apple">
+      <img src="https://img.icons8.com/fluency/48/microsoft.png" alt="Microsoft">
+    </div>
+  </div>
+</div>
+
+  
+
+</body>
+</html>
