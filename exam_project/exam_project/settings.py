@@ -100,17 +100,23 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'tibelidarshan@gmail.com'         # Replace with your Gmail
+EMAIL_HOST_PASSWORD = 'lqxxzlisbsfkunxi'        # Use Gmail App Password (not your main password)
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 
-USE_I18N = True
+# USE_I18N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
@@ -182,3 +188,8 @@ JAZZMIN_SETTINGS = {
     "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
     "language_chooser": False
 }
+
+# TWILIO_ACCOUNT_SID = 'your_account_sid'
+# TWILIO_AUTH_TOKEN = 'your_auth_token'
+# TWILIO_PHONE_NUMBER = '+919353503838'
+# TWILIO_EMAIL_SID = 'tibelidarshan@gmail.com'
